@@ -8,3 +8,5 @@ Homestead.yaml
 .env
 /staging
 /crons/*.txt
+/resources/views/themes/*
+!/resources/views/themes/default
