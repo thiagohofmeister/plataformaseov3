@@ -1,0 +1,199 @@
+.topo {
+	.h(100px); padding: 10px 0; background: @bg-topo;
+
+	.logotipo {
+		.f-l;
+		a {
+			.f-l; .size(281px, 102px); background: @logotipo no-repeat; background-size: 100% 100%;
+		}
+	}
+
+	.menu {
+		.f-r; margin-top: 40px; font-size: 16px;
+
+		nav {
+			ul {
+				li {
+					display: inline-block;
+
+					a {
+						color: @col-menu; text-decoration: none; .font1; .uppercase;
+						&:hover {
+							color: @col-hover;
+						}
+						&:after {
+							content: " | "; color: @col-menu; margin: 0 10px;
+						}
+					}
+					&:last-child {
+						a:after {							
+							display: none;
+							content: "";						
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.header-page {
+	.size(100%, 80px); background: @bg-header-page;
+
+	.center {
+		.h(100%); .relative;
+		&:before {
+			.seta-baixo; .absolute; top: -1px; left: 0;
+		}
+	}
+
+	.titulo {
+		.f-l; height: 80px;
+
+		h1 {
+			color: @col-header-page; margin-top: 28px; .font1; font-size: 20px; text-indent: 90px;
+		}
+	}
+
+	.breadcrumb {
+		.f-r; margin-top: 33px; width: 100%; text-align: right;
+		ul {
+			li {
+				display: inline-block; vertical-align: middle;
+
+				a {
+					text-decoration: none; color: @col-padrao; .font1; font-size: 12px;
+				} 
+
+				&:before {
+					content: ">"; font-size: 12px; margin: 4px 5px 0 2px; .font1; color: @col-padrao;
+				}
+
+				&:first-child {
+					&:before {
+						display: none;
+						content: "";
+					}
+				}
+
+			}
+		}
+	}
+}
+
+.rodape {
+	.f-l; background: @bg-rodape; .size(100%, auto); min-height: 130px;
+
+	.esquerda {
+		.f-l; margin-top: 20px;
+
+		nav {
+			margin-bottom: 5px;
+			ul {
+				li {
+					display: inline-block;
+
+					a {
+						color: #FFF; text-decoration: none; .font1; .uppercase; font-size: 12px;
+						&:hover {
+							color: @col-hover;
+						}
+						&:after {
+							content: " | "; color: #FFF; margin: 0 5px;
+						}
+					}
+					&:last-child {
+						a:after {	
+							display: none;
+							content: "";
+						}
+					}
+				}
+			}
+		}
+
+		span {
+			color: #FFF; .font1; font-size: 11px;
+		}
+	}
+
+	.direita {
+		.f-r; margin-top: 20px;
+
+		ul {
+			li {
+				display: inline-block; margin-right: 10px;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+	.texto {
+		margin: 20px 0; .font1; color: #FFF; font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.topo {
+		.logotipo {
+			margin-top: 10px; margin-left: 5px;
+			a {
+				.size(201px, 72px);
+			}
+		}
+	}
+
+	.header-page {
+		.breadcrumb {
+			margin-right: 10px;
+		}
+	}
+
+	.rodape {
+		.esquerda {
+			margin-left: 5px;
+		}
+		.direita {
+			margin-right: 5px;
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.topo {
+		.logotipo {
+			margin-top: 10px; margin-left: 0;
+			a {
+				.size(201px, 72px);
+			}
+		}
+
+		.menu {
+			.w(316px);
+		}
+	}
+
+	.header-page {
+		height: 100px;
+		.titulo {
+			margin-left: 5px;
+			h1 {
+				text-indent: 0px; font-size: 16px; .w(320px);
+			}
+		}
+		.breadcrumb {
+			.f-l; margin: 0; margin-left: 5px;
+		}
+	}
+
+	.rodape {
+		.esquerda {
+			margin-left: 5px;
+		}
+		.direita {
+			margin-right: 5px;
+		}
+	}
+}

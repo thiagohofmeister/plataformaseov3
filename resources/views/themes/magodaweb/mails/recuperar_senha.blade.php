@@ -1,0 +1,1 @@
+Altere sua senha <a href="{{ url('admin/reset/'.$token) }}">aqui</a>

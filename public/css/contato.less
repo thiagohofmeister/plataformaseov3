@@ -1,0 +1,22 @@
+.formulario {
+	.w(320px); margin: 0 auto;
+	input {
+		display: block; .size(305px, 35px); margin-bottom: 10px; padding: 0 5px;
+	}
+	select {
+		display: block; .size(319px, 35px); margin-bottom: 10px; padding: 0 5px;
+	}
+	textarea {
+		display: block; .size(320px, 150px); margin-bottom: 10px; padding: 5px; resize: none;
+	}
+	input, select, textarea {
+		font-size: 14px; .font2; color: @col-link; outline: none;
+
+		&:active, &:focus {
+			border: 1px solid @col-hover;
+		}
+	}
+	.btn_enviar {
+		.f-r; .size(80px, 35px); background: @col-hover; color: #FFF; .uppercase; .font1; border: 0; cursor: pointer;
+	}
+}

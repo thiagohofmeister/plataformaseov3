@@ -1,0 +1,264 @@
+.banner-principal {
+	.f-l; .size(100%, 551px); background: @banner-topo no-repeat; background-position: center; text-align: center; color: #FFF;
+
+	.center {
+		.h(551px); .relative;
+	}
+
+	.texto {
+		.f-l;
+		h2 {
+			font-size: 60px; .font1; font-weight: bold; margin-top: 40px;
+		}
+
+		p {
+			.w(670px); margin: 30px auto; font-size: 35px; .font1; 
+		}
+
+		small {
+			.w(470px); margin: 30px auto 50px; font-size: 25px; .font1; display: block;
+		}
+
+		a {
+			background: @col-hover; padding: 15px 25px; text-decoration: none; .font1; color: #FFF; border-radius: 7px;
+		}
+	}
+
+	.case-um {
+		.absolute; left: 0; bottom: -20px; .size(210px, 313px); background: url('../uploads/diversos/iphone.png');
+		article {
+			margin: 45px 47px; .size(122px, 216px); background: #FFF;
+			img {
+				.size(122px, 216px);
+			}
+		}
+	}
+
+	.case-dois {
+		.absolute; right: 0; bottom: -20px; .size(512px, 268px); background: url('../uploads/diversos/macbook.png');
+
+		article {
+			margin: 17px 83px; .size(346px, 216px); background: #FFF;
+			img {
+				.size(346px, 216px);
+			}
+		}
+	}
+}
+
+.conteudo {
+	margin-top: 40px;
+
+	.servicos {
+		.w(910px); margin: 0 auto;
+		article {
+			.size(300px, auto); display: inline-block; text-align: center; .font1; margin-bottom: 40px; vertical-align: top;
+			h3 {
+				color: @col-padrao; font-size: 25px;
+			}
+			img {
+				margin: 25px 0; max-width: 120px;
+			}
+			p {
+				.w(250px); margin: 0 auto; color: @col-padrao2; font-size: 14px;
+			}
+		}
+	}
+
+	.cases {
+		.w(910px); margin: 0 auto;
+		article {
+			.size(300px, auto); display: inline-block; text-align: center; .font1; margin-bottom: 40px; vertical-align: top;
+			h3 {
+				color: @col-padrao; font-size: 25px;
+			}
+			img {
+				margin: 25px 0; max-width: 120px;
+			}
+			p {
+				.w(250px); margin: 0 auto; color: @col-padrao2; font-size: 14px;
+			}
+		}
+	}
+
+	.ultimos-artigos {
+		background: @bg-conteudo-home; .size(auto, auto); padding: 25px 0;
+
+		h3 {
+			color: @col-padrao; font-size: 25px; margin-bottom: 20px; .font1;
+		}
+
+		article {
+			.size(324px, 324px); display: inline-block; margin-left: 9px; margin-bottom: 10px; .relative; vertical-align: top;
+
+			img {
+				.size(100%, 324px); vertical-align: middle;
+			}
+
+			.info {
+				.absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: @bg-info;
+
+				h3 {
+					color: #FFF; .font1; text-align: left; font-size: 20px; text-shadow: 1px 1px 1px #000;
+				}
+
+				.data {
+					.f-l; background: @bg-data; .size(90px, 25px); line-height: 25px; text-align: center; color: #FFF; .font1; font-size: 12px;
+				}
+
+				.comentarios {
+					line-height: 25px; color: #FFF; .font1; font-size: 12px;
+
+					&:before {
+						.f-l; .size(16px, 16px); background: @icone-comentario; content: ""; margin: 5px 5px 0 10px;
+					}
+				}
+			}
+
+			&:nth-child(2), &:nth-child(5) {
+				margin-left: 0;
+			}
+
+			&:nth-child(5) {
+				.size(662px, 324px);
+			}
+		}
+	}
+}
+
+
+
+@media screen and (max-width: 768px) {
+	.banner-principal {
+		.case-um {
+			.size(140px, 213px); background-size: 100% 100%; bottom: -14px;
+
+			article {
+				margin: 30px 31px; .size(82px, 148px);
+
+				img {
+					.size(82px, 148px);
+				}
+			}
+		}
+
+		.case-dois {
+			.size(352px, 188px); background-size: 100% 100%; bottom: -14px;
+
+			article {
+				margin: 11px 56px; .size(240px, 153px);
+
+				img {
+					.size(240px, 153px);
+				}
+			}
+		}
+	}
+
+	.conteudo {
+		.servicos {
+			width: 750px;
+
+			article {
+				.w(245px);
+			}
+		}
+
+		.ultimos-artigos {
+			article {
+				.size(240px, 240px);
+
+				.info {
+					h3 {
+						font-size: 17px;
+					}
+
+					.data {
+						.w(75px);
+					}
+				}
+
+				&:nth-child(5) {
+					.size(494px, 240px);
+				}
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 480px) {
+	.topo {
+		height: 130px;
+		.logotipo {
+			width: 320px;
+			a {
+				float: none; display: block; margin: 0 auto;
+			}
+		}
+		.menu {
+			width: 320px; font-size: 12px; margin: 20px 0; text-align: center;
+
+			nav ul li a {
+				margin: 0 2px;
+				&:after {
+					display: none; content: "";
+				}
+			}
+		}
+	}
+	.banner-principal {
+		height: 280px;
+		.center {
+			height: 280px;
+		}
+		.texto {
+			h2 {
+				.w(320px); font-size: 28px;
+			}
+			p {
+				.w(320px); font-size: 15px; margin: 10px 0;
+			}
+			small {
+				.w(320px); margin: 10px 0 30px; font-size: 12px;
+			}
+		}
+
+		.case-um, .case-dois {
+			display: none;
+		}
+	}
+
+	.conteudo {
+		.servicos {
+			width: 320px;
+
+			article {
+				.w(100%); display: block;
+				p {
+					width: 310px;
+				}
+			}
+		}
+
+		.ultimos-artigos {
+			article {
+				.size(320px, 320px); margin-left: 0;
+
+				.info {
+					h3 {
+						font-size: 17px;
+					}
+
+					.data {
+						.w(75px);
+					}
+				}
+
+				&:nth-child(5) {
+					.size(320px, 320px);
+				}
+			}
+		}
+	}
+}
