@@ -8,7 +8,7 @@ if ($token == 'a5f55ae5bd9674dd11b680666248acd1') {
     shell_exec("rm -rf ../.git/logs/refs/heads/staging");
     shell_exec("rm -rf ../.git/logs/HEAD");
 
-
+    shell_exec("git checkout .");
     $exec = shell_exec("git pull origin staging 2>&1");
     echo $exec;
 
