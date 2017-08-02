@@ -4,6 +4,7 @@ $token = $_GET['token'];
 
 if ($token == 'a5f55ae5bd9674dd11b680666248acd1') {
     shell_exec("rm -rf ../.git/refs/remotes/origin");
+    shell_exec("rm -rf ../.git/logs/refs/remotes/origin/staging");
     shell_exec("rm -rf ../.git/logs/refs/heads/staging/HEAD");
     shell_exec("rm -rf ../.git/logs/refs/heads/staging");
     shell_exec("rm -rf ../.git/logs/HEAD");

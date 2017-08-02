@@ -3,7 +3,9 @@
 $token = $_GET['token'];
 
 if ($token == 'a5f55ae5bd9674dd11b680666248acd1') {
+    shell_exec("rm -rf ../.git/refs/remotes/origin/master");
     shell_exec("rm -rf ../.git/refs/remotes/origin");
+    shell_exec("rm -rf ../.git/logs/refs/remotes/origin/master");
     shell_exec("rm -rf ../.git/logs/refs/heads/master/HEAD");
     shell_exec("rm -rf ../.git/logs/refs/heads/master");
     shell_exec("rm -rf ../.git/logs/HEAD");
