@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Mail;
 class AppController extends Controller {
 
     public function index() {
-        dd("Thiago");
         $Posts = new Post;
         $Seo = new TagSeo;
         $Conteudo = new Conteudo;
