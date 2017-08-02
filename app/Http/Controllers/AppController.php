@@ -20,9 +20,9 @@ class AppController extends Controller {
         $Cases = $Conteudo->getContentsType('cases', 2);
         $CaseUm = !empty($Cases[0]) ? $Cases[0] : [];
         $CaseDois = !empty($Cases[1]) ? $Cases[1] : [];
-        
+
         $Servicos = $Conteudo->getContentsType('servicos');
-        
+
         $Posts = $Posts->getPosts(5);
         $Seo = $Seo->getSeo();
 
