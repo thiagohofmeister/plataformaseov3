@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\Post\Status;
 use Mail;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Usuario;
 use App\Post;
 use App\Comentario;
 use App\TagSeo;
 use Carbon\Carbon;
-use Illuminate\Auth\Passwords\TokenRepositoryInterface;
-use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\RecuperarSenha;
 
@@ -22,18 +19,22 @@ class UsuarioController extends Controller {
     private $Usuario;
 
     public function __construct(Usuario $usuario) {
+        parent::__construct();
+
         $this->Usuario = $usuario;
     }
 
     public function index() {
-        $Posts = new Post;
-        $Comentarios = new Comentario;
+        $Post = new Post;
+        $Comentario = new Comentario;
         $Seo = new TagSeo;
 
         $Seo = $Seo->getSeo((object) ['seo_title' => 'Dashboard'], false);
-        $Posts = $Posts->getPosts();
-        $Comentarios = $Comentarios->getTotal();
-        return view(TM . 'admin/index', compact('Posts', 'Comentarios', 'Seo'));
+        $Posts = $Post->getPosts();
+        $Comentarios = $Comentario->getTotal();
+        $TotalPosts = $Post->getTotalPosts(Status::PUBLISHED());
+
+        return view(TM . 'admin/index', compact('Posts', 'Comentarios', 'Seo', 'TotalPosts'));
     }
 
     public function add() {
