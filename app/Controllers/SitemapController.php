@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-class SitemapController extends Controller
-{
+class SitemapController extends Controller {
     //
 }

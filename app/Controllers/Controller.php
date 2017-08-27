@@ -7,9 +7,9 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\TagSeo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Controller extends BaseController {
-
     use AuthorizesRequests,
         DispatchesJobs,
         ValidatesRequests;
@@ -17,18 +17,13 @@ class Controller extends BaseController {
     public $Seo;
 
     public function __construct() {
-        $this->getSeo();
-    }
-
-    public function getSeo() {
-        $Seo = new TagSeo;
-        $this->Seo = $Seo->getSeo();
+        $this->Seo = (new TagSeo)->getSeo();
     }
 
     /**
      * Método Genérico para Upload de arquivos
      *
-     * @param File $file
+     * @param UploadedFile $file
      * @param string $path
      * @param string $name
      *
@@ -84,6 +79,14 @@ class Controller extends BaseController {
 	    return $string;
     }
 
+    /**
+     * Retorna o nome do arquivo.
+     *
+     * @param UploadedFile $file
+     * @param string|null $name
+     *
+     * @return string
+     */
     public function makeFileName($file, $name = null) {
         if ($name != null) {
             $file_name = $this->makeSlug($name);
@@ -97,6 +100,13 @@ class Controller extends BaseController {
         return $file_name;
     }
 
+    /**
+     * Corrige as datas para o formato correto.
+     *
+     * @param $req
+     * @param array $datas
+     * @param bool $sem_hora
+     */
     public function setDatas(&$req, $datas = [], $sem_hora = false) {
         foreach ($datas as $key => $date) {
 
@@ -116,6 +126,14 @@ class Controller extends BaseController {
         }
     }
 
+    /**
+     * Retornas as datas no formato correto.
+     *
+     * @param string $data
+     * @param bool $sem_hora
+     *
+     * @return string
+     */
     public function arrumarDatas($data, $sem_hora = false) {
         if ($sem_hora) {
             if (count(explode("/", $data)) > 1) {

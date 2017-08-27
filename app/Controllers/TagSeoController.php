@@ -10,7 +10,6 @@ use App\Models\PaginaSeo;
 use App\Models\Conteudo;
 
 class TagSeoController extends Controller {
-
     private $TagSeo;
 
     public function __construct(TagSeo $tagseo) {

@@ -8,9 +8,6 @@ Route::group(['prefix' => ''], function() {
 // Index
 Route::get('/', 'AppController@index');
 
-
-//Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 Route::get('/envia', 'AppController@envia');
 

@@ -5,14 +5,15 @@ namespace App\Controllers;
 use App\Models\Post;
 use App\Models\TagSeo;
 use App\Models\Conteudo;
-use App\Mail\TesteEmail;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\View\View;
 
 class AppController extends Controller {
-
+    /**
+     * Retorna a view inicial do site.
+     *
+     * @return View
+     */
     public function index() {
-        $Posts = new Post;
-        $Seo = new TagSeo;
         $Conteudo = new Conteudo;
 
         $Cases = $Conteudo->getContentsType('cases', 2);
@@ -21,14 +22,9 @@ class AppController extends Controller {
 
         $Servicos = $Conteudo->getContentsType('servicos');
 
-        $Posts = $Posts->getPosts(5);
-        $Seo = $Seo->getSeo();
+        $Posts = (new Post)->getPosts(5);
+        $Seo = (new TagSeo)->getSeo();
 
         return view(TM . 'index', compact('Posts', 'Seo', 'CaseUm', 'CaseDois', 'Servicos'));
     }
-
-    public function envia() {
-        Mail::to('thiago.hofmeister@gmail.com')->send(new TesteEmail);
-    }
-
 }

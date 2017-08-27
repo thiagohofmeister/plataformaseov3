@@ -7,10 +7,12 @@ use App\Models\Comentario;
 use App\Models\Post;
 
 class ComentarioController extends Controller {
-
+    /** @var Comentario */
     private $Comentario;
 
     public function __construct(Comentario $comentario) {
+        parent::__construct();
+
         $this->Comentario = $comentario;
     }
 

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Mail\RecuperarSenha;
 
 class UsuarioController extends Controller {
-
     private $Usuario;
 
     public function __construct(Usuario $usuario) {

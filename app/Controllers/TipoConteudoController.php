@@ -4,8 +4,7 @@ namespace App\Controllers;
 
 use App\Models\TipoConteudo;
 
-class TipoConteudoController extends Controller
-{
+class TipoConteudoController extends Controller {
     private $TipoConteudo;
     
     public function __construct(TipoConteudo $tc) {

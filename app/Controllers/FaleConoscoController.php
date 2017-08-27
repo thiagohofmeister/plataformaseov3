@@ -7,8 +7,7 @@ use App\Mail\FaleConosco;
 use Mail;
 use App\Models\TagSeo;
 
-class FaleConoscoController extends Controller
-{
+class FaleConoscoController extends Controller {
     /**
      * Envia o E-mail de Contato
      *

@@ -4,11 +4,13 @@ namespace App\Controllers;
 
 use App\Models\Conteudo;
 
-class ConteudoController extends Controller
-{
+class ConteudoController extends Controller {
+    /** @var Conteudo */
     private $Conteudo;
     
     public function __construct(Conteudo $cont) {
+        parent::__construct();
+
         $this->Conteudo = $cont;
     }
     

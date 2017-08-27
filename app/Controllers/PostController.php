@@ -10,13 +10,17 @@ use App\Models\Comentario;
 use App\Models\Usuario;
 use App\Models\Categoria;
 use App\Models\PostTag;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class PostController extends Controller {
-
+    /** @var Post */
     private $Post;
 
     public function __construct(Post $post = null) {
+        parent::__construct();
+
         $this->Post = $post;
     }
 
@@ -25,6 +29,8 @@ class PostController extends Controller {
      *
      * @param string $categoria - slug da categoria
      * @param string $post - slug do post
+     *
+     * @return Response|View
      */
     public function single($categoria, $post) {
         // Post

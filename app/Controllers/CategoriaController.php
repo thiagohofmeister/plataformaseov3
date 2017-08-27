@@ -2,22 +2,26 @@
 
 namespace App\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Categoria;
 use App\Models\Post;
+use Illuminate\View\View;
 
 class CategoriaController extends Controller {
-
+    /** @var Categoria */
     private $Categoria;
 
     public function __construct(Categoria $categoria = null) {
+        parent::__construct();
+
         $this->Categoria = $categoria;
     }
 
     /**
      * Lista de Categorias
      * 
-     * @return view com uma listagem das categorias 
+     * @return View com uma listagem das categorias
      */
     public function index() {
         $Categorias = $this->Categoria->getCats();
@@ -75,7 +79,15 @@ class CategoriaController extends Controller {
 
         return view(TM . 'admin/categorias/edit', compact('Categoria'));
     }
-    
+
+    /**
+     * Faz a edição da categoria.
+     *
+     * @param $id
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
     public function postEdit($id, Request $request) {
         $req = $request->except('_token', 'url');
 
@@ -111,7 +123,14 @@ class CategoriaController extends Controller {
             return redirect('admin/categorias/edit/'.$id)->withErrors('Erro ao modificar a categoria')->withInput();
         }
     }
-    
+
+    /**
+     * Remove uma categoria.
+     *
+     * @param $id
+     *
+     * @return RedirectResponse
+     */
     public function delete($id) {        
         $PostsVinculados = new Post();
         $PostsVinculados = $PostsVinculados->where('id_categoria', $id)->get();
@@ -120,7 +139,6 @@ class CategoriaController extends Controller {
             $up = ['status' => 0];
             $this->Categoria->find($id)->update($up);
             return redirect('admin/categorias/')->with('msg', 'Existem postagens vinculadas com essa categoria, então a categoria foi apenas inativada e não excluída.');
-            dd("Existem vinculados, então a categoria foi inativada");
         }
         
         $delete = $this->Categoria->find($id)->delete();
@@ -131,7 +149,14 @@ class CategoriaController extends Controller {
             return redirect('admin/categorias/')->withErrors('Erro ao excluir a categoria')->withInput();
         }
     }
-    
+
+    /**
+     * Altera o status da categoria.
+     *
+     * @param $id
+     *
+     * @return RedirectResponse
+     */
     public function status($id) {
         $Categoria = $this->Categoria->find($id);
         

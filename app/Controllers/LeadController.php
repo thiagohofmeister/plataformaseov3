@@ -4,11 +4,13 @@ namespace App\Controllers;
 
 use App\Models\Lead;
 
-class LeadController extends Controller
-{
+class LeadController extends Controller {
+    /** @var Lead */
     private $Lead;
 
     public function __construct(Lead $lead = null) {
+        parent::__construct();
+
     	$this->Lead = $lead;
     }
    	
