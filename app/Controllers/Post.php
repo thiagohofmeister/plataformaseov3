@@ -20,10 +20,6 @@ class Post extends Seo {
         parent::__construct();
 
         $this->Post = $post;
-
-        if (empty($post)) {
-            $this->Post = new Model();
-        }
     }
 
     /**

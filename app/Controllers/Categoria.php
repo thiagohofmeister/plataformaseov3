@@ -7,16 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Categoria as Model;
 use App\Models\Post;
 use Illuminate\View\View;
+use App\Repositories;
 
 class Categoria extends Controller {
     /** @var Model */
     private $categoria;
 
+    private $repository;
+
     public function __construct(Model $categoria = null) {
         $this->categoria = $categoria;
-        if (empty($categoria)) {
-            $this->categoria = new Model();
-        }
+        $this->repository = new Repositories\Categoria($this->categoria);
     }
 
     /**
@@ -25,7 +26,7 @@ class Categoria extends Controller {
      * @return View com uma listagem das categorias
      */
     public function index() {
-        $Categorias = $this->categoria->getCats();
+        $Categorias = $this->repository->findAll();
 
         return view(TM . 'admin/categorias/index', compact('Categorias'));
     }
