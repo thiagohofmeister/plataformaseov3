@@ -121,7 +121,7 @@ Route::group(['middleware' => 'usuario'], function() {
 
     Route::post('/contato', 'FaleConosco@mail');
 
-    Route::get('/{url}', 'Action\Config@router');
+    Route::get('/{url}', 'Config@router');
 
     Route::get('/{categoria}/{post}', 'Post@single');
     Route::post('/{categoria}/{post}', 'Comentario@add');
