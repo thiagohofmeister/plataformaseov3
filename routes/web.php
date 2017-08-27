@@ -58,7 +58,7 @@ Route::group(['middleware' => 'usuario'], function() {
          * Áreas de Conteúdo
          */
         Route::get('/admin/tipoconteudos', 'TipoConteudo@index');
-        Route::get('/admin/tipoconteudos/add', 'TipoConteudoController@add');
+        Route::get('/admin/tipoconteudos/add', 'TipoConteudo@add');
         Route::post('/admin/tipoconteudos/add', 'TipoConteudo@postAdd');
         Route::get('/admin/tipoconteudos/edit/{id}', 'TipoConteudo@edit')
             ->where(['id' => '[0-9]+']);
