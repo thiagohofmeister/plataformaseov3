@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers\Action;
+namespace App\Controllers;
 
 use App\Enum\Status;
 use App\Models\Categoria;
@@ -130,7 +130,7 @@ class Config
         if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . $controller . '.php')) {
             $class = "App\\Controllers\\" . $controller;
 
-        } elseif (file_exists(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $controller . '.php')) {
+        } elseif (file_exists(__DIR__ . DIRECTORY_SEPARATOR . DIRECTORY_SEPARATOR . $controller . '.php')) {
             $class = "App\\Controllers\\" . $controller;
         }
 
