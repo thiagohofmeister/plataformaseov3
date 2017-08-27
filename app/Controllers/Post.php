@@ -3,28 +3,26 @@
 namespace App\Controllers;
 
 use Illuminate\Http\Request;
-use App\Controllers\Controller;
-use App\Models\Post;
+use App\Models\Post as Model;
 use App\Models\TagSeo;
 use App\Models\Comentario;
 use App\Models\Usuario;
 use App\Models\Categoria;
 use App\Models\PostTag;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-class PostController extends Seo {
-    /** @var Post */
+class Post extends Seo {
+    /** @var Model */
     private $Post;
 
-    public function __construct(Post $post = null) {
+    public function __construct(Model $post = null) {
         parent::__construct();
 
         $this->Post = $post;
 
         if (empty($post)) {
-            $this->Post = new Post();
+            $this->Post = new Model();
         }
     }
 

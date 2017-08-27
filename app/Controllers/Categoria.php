@@ -4,18 +4,18 @@ namespace App\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\Categoria;
+use App\Models\Categoria as Model;
 use App\Models\Post;
 use Illuminate\View\View;
 
-class CategoriaController extends Controller {
-    /** @var Categoria */
+class Categoria extends Controller {
+    /** @var Model */
     private $categoria;
 
-    public function __construct(Categoria $categoria = null) {
+    public function __construct(Model $categoria = null) {
         $this->categoria = $categoria;
         if (empty($categoria)) {
-            $this->categoria = new Categoria();
+            $this->categoria = new Model();
         }
     }
 

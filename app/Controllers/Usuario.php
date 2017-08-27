@@ -6,7 +6,7 @@ use App\Enum\Post\Status;
 use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Usuario;
+use App\Models\Usuario as Model;
 use App\Models\Post;
 use App\Models\Comentario;
 use App\Models\TagSeo;
@@ -14,10 +14,11 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use App\Mail\RecuperarSenha;
 
-class UsuarioController extends Controller {
+class Usuario extends Controller {
+    /** @var Model */
     private $Usuario;
 
-    public function __construct(Usuario $usuario) {
+    public function __construct(Model $usuario) {
         $this->Usuario = $usuario;
     }
 

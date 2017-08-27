@@ -3,11 +3,11 @@
 namespace App\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mail\FaleConosco;
+use App\Mail\FaleConosco as Model;
 use Mail;
 use App\Models\TagSeo;
 
-class FaleConoscoController extends Controller {
+class FaleConosco extends Controller {
     /**
      * Envia o E-mail de Contato
      *
@@ -34,7 +34,7 @@ class FaleConoscoController extends Controller {
     		return redirect('/contato')->withErrors($validator)->withInput();
     	}
 
-    	Mail::to($Tag->email)->send(new FaleConosco($req));
+    	Mail::to($Tag->email)->send(new Model($req));
 
     	return redirect('/contato')->with(['msg' => 'E-mail enviado com sucesso. Entraremos em contato em breve.']);
     }

@@ -2,12 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\TipoConteudo;
+use App\Models\TipoConteudo as Model;
 
-class TipoConteudoController extends Controller {
+class TipoConteudo extends Controller {
+    /** @var Model */
     private $TipoConteudo;
     
-    public function __construct(TipoConteudo $tc) {
+    public function __construct(Model $tc) {
         $this->TipoConteudo = $tc;
     }
     

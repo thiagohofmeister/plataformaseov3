@@ -2,17 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\TagSeo;
-use App\Models\Tag;
-use App\Models\Categoria;
-use App\Models\Post;
-use App\Models\PaginaSeo;
-use App\Models\Conteudo;
+use App\Models\TagSeo as Model;
 
-class TagSeoController extends Controller {
+class TagSeo extends Controller {
+    /** @var Model */
     private $TagSeo;
 
-    public function __construct(TagSeo $tagseo) {
+    public function __construct(Model $tagseo) {
         $this->TagSeo = $tagseo;
     }
     
