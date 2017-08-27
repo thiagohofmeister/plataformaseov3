@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\Comentario\Status;
 use Illuminate\Database\Eloquent\Model;
 
 class Comentario extends Model {
@@ -33,7 +34,7 @@ class Comentario extends Model {
     public function getCommentsSite($post_id) {
         return $this->select('comentarios.*')
             ->where('comentarios.id_post', $post_id)
-            ->where('comentarios.status', 'a')
+            ->where('comentarios.status', Status::APROVADO)
             ->leftJoin('comentarios as parent', 'parent.id', '=', 'comentarios.id_comentario_parent')
             ->orderBy('id_comentario_parent', 'asc')
             ->orderBy('data_comentario', 'desc')
@@ -42,9 +43,9 @@ class Comentario extends Model {
 
     public function getTotal($post_id = null) {
         if ($post_id != null) {
-            $total = $this->where('status', '<>', 'n')->where('id_post', $post_id)->count();
+            $total = $this->where('status', '<>', Status::NOVO)->where('id_post', $post_id)->count();
         } else {
-            $total = $this->where('status', '<>', 'n')->count();
+            $total = $this->where('status', '<>', Status::NOVO)->count();
         }
         
         return $total;
