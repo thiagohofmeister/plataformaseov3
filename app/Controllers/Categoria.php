@@ -17,9 +17,6 @@ class Categoria extends Controller {
 
     public function __construct(Model $categoria = null) {
         $this->categoria = $categoria;
-        if (empty($categoria)) {
-            $this->categoria = new Model();
-        }
         $this->repository = new Repositories\Categoria($this->categoria);
     }
 
