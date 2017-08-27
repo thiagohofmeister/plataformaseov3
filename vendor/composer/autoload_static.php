@@ -92,6 +92,10 @@ class ComposerStaticInit3fe7c4aa1350f9f4e28391a64122fc06
         array (
             'Faker\\' => 6,
         ),
+        'E' => 
+        array (
+            'Eloquent\\Enumeration\\' => 21,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
@@ -244,6 +248,10 @@ class ComposerStaticInit3fe7c4aa1350f9f4e28391a64122fc06
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
+        'Eloquent\\Enumeration\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/eloquent/enumeration/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -318,6 +326,7 @@ class ComposerStaticInit3fe7c4aa1350f9f4e28391a64122fc06
         'App\\Comentario' => __DIR__ . '/../..' . '/app/Comentario.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Conteudo' => __DIR__ . '/../..' . '/app/Conteudo.php',
+        'App\\Enum\\Status' => __DIR__ . '/../..' . '/app/Enum/Status.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AppController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -326,16 +335,27 @@ class ComposerStaticInit3fe7c4aa1350f9f4e28391a64122fc06
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\CategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriaController.php',
         'App\\Http\\Controllers\\ComentarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/ComentarioController.php',
+        'App\\Http\\Controllers\\ConteudoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConteudoController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\FaleConoscoController' => __DIR__ . '/../..' . '/app/Http/Controllers/FaleConoscoController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\LeadController' => __DIR__ . '/../..' . '/app/Http/Controllers/LeadController.php',
+        'App\\Http\\Controllers\\PaginaSeoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaginaSeoController.php',
         'App\\Http\\Controllers\\PostController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostController.php',
+        'App\\Http\\Controllers\\SeoController' => __DIR__ . '/../..' . '/app/Http/Controllers/SeoController.php',
+        'App\\Http\\Controllers\\SitemapController' => __DIR__ . '/../..' . '/app/Http/Controllers/SitemapController.php',
         'App\\Http\\Controllers\\TagSeoController' => __DIR__ . '/../..' . '/app/Http/Controllers/TagSeoController.php',
+        'App\\Http\\Controllers\\TipoConteudoController' => __DIR__ . '/../..' . '/app/Http/Controllers/TipoConteudoController.php',
         'App\\Http\\Controllers\\UsuarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsuarioController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
+        'App\\Http\\Middleware\\HttpsProtocol' => __DIR__ . '/../..' . '/app/Http/Middleware/HttpsProtocol.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\UsuarioAuthenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/UsuarioAuthenticate.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Lead' => __DIR__ . '/../..' . '/app/Lead.php',
+        'App\\Mail\\FaleConosco' => __DIR__ . '/../..' . '/app/Mail/FaleConosco.php',
+        'App\\Mail\\RecuperarSenha' => __DIR__ . '/../..' . '/app/Mail/RecuperarSenha.php',
         'App\\PaginaSeo' => __DIR__ . '/../..' . '/app/PaginaSeo.php',
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\PostTag' => __DIR__ . '/../..' . '/app/PostTag.php',
@@ -344,6 +364,8 @@ class ComposerStaticInit3fe7c4aa1350f9f4e28391a64122fc06
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Seo' => __DIR__ . '/../..' . '/app/Seo.php',
+        'App\\Sitemap' => __DIR__ . '/../..' . '/app/Sitemap.php',
         'App\\Tag' => __DIR__ . '/../..' . '/app/Tag.php',
         'App\\TagSeo' => __DIR__ . '/../..' . '/app/TagSeo.php',
         'App\\TipoConteudo' => __DIR__ . '/../..' . '/app/TipoConteudo.php',
@@ -410,6 +432,16 @@ class ComposerStaticInit3fe7c4aa1350f9f4e28391a64122fc06
         'Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
         'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'Eloquent\\Enumeration\\AbstractEnumeration' => __DIR__ . '/..' . '/eloquent/enumeration/src/AbstractEnumeration.php',
+        'Eloquent\\Enumeration\\AbstractMultiton' => __DIR__ . '/..' . '/eloquent/enumeration/src/AbstractMultiton.php',
+        'Eloquent\\Enumeration\\AbstractValueMultiton' => __DIR__ . '/..' . '/eloquent/enumeration/src/AbstractValueMultiton.php',
+        'Eloquent\\Enumeration\\EnumerationInterface' => __DIR__ . '/..' . '/eloquent/enumeration/src/EnumerationInterface.php',
+        'Eloquent\\Enumeration\\Exception\\AbstractUndefinedMemberException' => __DIR__ . '/..' . '/eloquent/enumeration/src/Exception/AbstractUndefinedMemberException.php',
+        'Eloquent\\Enumeration\\Exception\\ExtendsConcreteException' => __DIR__ . '/..' . '/eloquent/enumeration/src/Exception/ExtendsConcreteException.php',
+        'Eloquent\\Enumeration\\Exception\\UndefinedMemberException' => __DIR__ . '/..' . '/eloquent/enumeration/src/Exception/UndefinedMemberException.php',
+        'Eloquent\\Enumeration\\Exception\\UndefinedMemberExceptionInterface' => __DIR__ . '/..' . '/eloquent/enumeration/src/Exception/UndefinedMemberExceptionInterface.php',
+        'Eloquent\\Enumeration\\MultitonInterface' => __DIR__ . '/..' . '/eloquent/enumeration/src/MultitonInterface.php',
+        'Eloquent\\Enumeration\\ValueMultitonInterface' => __DIR__ . '/..' . '/eloquent/enumeration/src/ValueMultitonInterface.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Luhn' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Calculator/Luhn.php',
         'Faker\\DefaultGenerator' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/DefaultGenerator.php',

@@ -2027,12 +2027,12 @@
         "version_normalized": "0.9.7.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/padraic/mockery.git",
+            "url": "https://github.com/mockery/mockery.git",
             "reference": "4de7969f4664da3cef1ccd83866c9f59378c3371"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/padraic/mockery/zipball/4de7969f4664da3cef1ccd83866c9f59378c3371",
+            "url": "https://api.github.com/repos/mockery/mockery/zipball/4de7969f4664da3cef1ccd83866c9f59378c3371",
             "reference": "4de7969f4664da3cef1ccd83866c9f59378c3371",
             "shasum": ""
         },
@@ -3838,6 +3838,59 @@
             "multiauth",
             "signin",
             "user"
+        ]
+    },
+    {
+        "name": "eloquent/enumeration",
+        "version": "5.1.1",
+        "version_normalized": "5.1.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/eloquent/enumeration.git",
+            "reference": "0242859435d9b135939816858348556d3cde9e3c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/eloquent/enumeration/zipball/0242859435d9b135939816858348556d3cde9e3c",
+            "reference": "0242859435d9b135939816858348556d3cde9e3c",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3"
+        },
+        "require-dev": {
+            "icecave/archer": "dev-develop",
+            "phpunit/phpunit": "^4",
+            "sami/sami": "^3"
+        },
+        "time": "2015-11-03T22:21:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Eloquent\\Enumeration\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Erin Millard",
+                "email": "ezzatron@gmail.com",
+                "homepage": "http://ezzatron.com/"
+            }
+        ],
+        "description": "An enumeration implementation for PHP.",
+        "homepage": "https://github.com/eloquent/enumeration",
+        "keywords": [
+            "class",
+            "enum",
+            "enumeration",
+            "multiton",
+            "set",
+            "type"
         ]
     }
 ]
