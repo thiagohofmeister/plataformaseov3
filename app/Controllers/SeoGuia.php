@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Seo;
 
-class SeoController extends Controller {
+class SeoGuia extends Controller {
     private $SeoGuia;
 
     public function __construct(Seo $seo = null) {

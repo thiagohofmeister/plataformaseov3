@@ -22,6 +22,10 @@ class PostController extends Seo {
         parent::__construct();
 
         $this->Post = $post;
+
+        if (empty($post)) {
+            $this->Post = new Post();
+        }
     }
 
     /**
@@ -223,7 +227,7 @@ class PostController extends Seo {
      *
      * @return view com um objeto de posts
      */
-    public function drafts() {
+    public function rascunhos() {
         $Posts = $this->Post->getPostsDrafts();
         return view(TM . 'admin/posts/index', compact('Posts'));
     }

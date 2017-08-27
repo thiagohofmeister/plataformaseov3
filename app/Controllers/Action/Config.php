@@ -8,6 +8,7 @@ use App\Models\PaginaSeo;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\TagSeo;
+use Illuminate\Http\Request;
 
 /**
  * @todo Document class Config.
@@ -17,17 +18,25 @@ use App\Models\TagSeo;
 class Config
 {
     /** @var TagSeo */
-    private $TagSeo;
+    private $tagSeo;
 
-    public function __construct(TagSeo $tagseo) {
-        $this->TagSeo = $tagseo;
+    /** @var Request */
+    private $request;
+
+    public function __construct(TagSeo $tagseo, Request $request) {
+        $this->tagSeo = $tagseo;
+        $this->request = $request;
     }
 
-    public function router($url) {
+    public function router($url, $action = null, $data = null) {
         // Remover parâmetros
         $url = str_replace('&', '', urldecode($url));
         if (strpos($url, '?') !== false) {
             $url = substr($url, 0, strpos($url, '?'));
+        }
+
+        if ($this->isAdminUrl()) {
+            return $this->routerAdmin($url);
         }
 
         /**
@@ -38,7 +47,7 @@ class Config
 
         if (!empty($Categoria->nome)) {
             $Posts = (new Post)->getPostsCategory($Categoria->id, true);
-            $Seo = $this->TagSeo->getSeo($Categoria);
+            $Seo = $this->tagSeo->getSeo($Categoria);
             return view(TM . 'categoria', compact('Categoria', 'Posts', 'Seo'));
         }
 
@@ -48,7 +57,7 @@ class Config
         $Tag = (new Tag)->where('slug', $url)->first();
 
         if (!empty($Tag->nome)) {
-            $Seo = $this->TagSeo->getSeo($Tag);
+            $Seo = $this->tagSeo->getSeo($Tag);
             return view(TM . 'tag', compact('Tag', 'Seo'));
         }
 
@@ -67,7 +76,7 @@ class Config
         $Conteudo = (new Conteudo)->where('slug', $url)->first();
 
         if (!empty($Conteudo->slug)) {
-            $Seo = $this->TagSeo->getSeo($Conteudo);
+            $Seo = $this->tagSeo->getSeo($Conteudo);
             return view(TM . 'conteudo', compact('Conteudo', 'Seo'));
         }
 
@@ -75,7 +84,7 @@ class Config
     }
 
     public function getDatas($Pagina) {
-        $Seo = $this->TagSeo->getSeo($Pagina);
+        $Seo = $this->tagSeo->getSeo($Pagina);
         switch ($Pagina->url) {
             case 'servicos':
                 $Servicos = new Conteudo;
@@ -99,5 +108,76 @@ class Config
                 }
                 break;
         }
+    }
+
+    /**
+     * Realiza as rotas do painel administrativo.
+     *
+     * @param string $controller
+     * @param string|null $action
+     * @param string|null $data
+     *
+     * @return mixed
+     */
+    public function routerAdmin($controller, $action = 'index', $data = null)
+    {
+        $controller = $this->getUrlFormat($controller);
+
+        if (!empty($action)) {
+            $action = $this->getUrlFormat($action, true);
+        }
+
+        if (file_exists(__DIR__ . DIRECTORY_SEPARATOR . $controller . '.php')) {
+            $class = "App\\Controllers\\" . $controller;
+
+        } elseif (file_exists(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . $controller . '.php')) {
+            $class = "App\\Controllers\\" . $controller;
+        }
+
+        try {
+
+            $class = new $class;
+
+            if (!empty($data)) {
+                return $class->$action($data);
+            }
+
+            return $class->$action();
+
+        } catch (\Exception $e) {
+
+            return response()->view(TM . '404', [], 404);
+        }
+    }
+
+    /**
+     * Retorna se a URL é do painel administrativo.
+     *
+     * @return bool
+     */
+    private function isAdminUrl()
+    {
+        if (strpos($this->request->getRequestUri(), 'admin') !== false) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Retorna a URL formatada.
+     *
+     * @param $urlSegments
+     * @param bool $action
+     *
+     * @return string
+     */
+    private function getUrlFormat($urlSegments, $action = false)
+    {
+        $return = str_replace(' ', '', ucwords(str_replace('_', ' ', $urlSegments)));
+        if ($action) {
+            $return = lcfirst($return);
+        }
+
+        return $return;
     }
 }
