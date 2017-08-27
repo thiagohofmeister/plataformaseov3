@@ -167,4 +167,15 @@ class Post extends Model {
         }
     }
 
+    /**
+     * Retorna o total de posts por status.
+     *
+     * @param Enum\Post\Status $status
+     *
+     * @return int
+     */
+    public function getTotalPosts(Enum\Post\Status $status)
+    {
+        return $this->where('status', $status->value())->count();
+    }
 }
