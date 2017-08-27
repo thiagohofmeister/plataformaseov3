@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Conteudo;
+use App\Models\Conteudo;
 
 class ConteudoController extends Controller
 {

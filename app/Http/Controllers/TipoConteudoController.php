@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\TipoConteudo;
+use App\Models\TipoConteudo;
 
 class TipoConteudoController extends Controller
 {

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\PaginaSeo;
+use App\Models\PaginaSeo;
 
 class PaginaSeoController extends Controller
 {

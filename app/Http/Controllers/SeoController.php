@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Seo;
+use App\Models\Seo;
 
 class SeoController extends Controller
 {

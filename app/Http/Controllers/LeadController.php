@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Lead;
+use App\Models\Lead;
 
 class LeadController extends Controller
 {

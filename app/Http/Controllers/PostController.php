@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Post;
-use App\TagSeo;
-use App\Comentario;
-use App\Usuario;
-use App\Categoria;
-use App\PostTag;
+use App\Models\Post;
+use App\Models\TagSeo;
+use App\Models\Comentario;
+use App\Models\Usuario;
+use App\Models\Categoria;
+use App\Models\PostTag;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller {
@@ -34,7 +34,7 @@ class PostController extends Controller {
             return view(TM . 'index');
         }
         
-        // Remover parâmetros
+        // Remover parï¿½metros
         $post = str_replace('&', '', urldecode($post));
         if (strpos($post, '?') !== false) {
 	        $post = substr($post, 0, strpos($post, '?'));
@@ -239,7 +239,7 @@ class PostController extends Controller {
             }
         }
 
-        // Apagar Comentários
+        // Apagar Comentï¿½rios
         $ComentariosVinculados = new Comentario;
         $ComentariosVinculados->deleteRelation($id);
 
@@ -250,7 +250,7 @@ class PostController extends Controller {
         $delete = $this->Post->find($id)->delete();
         
         if ($delete) {
-            return redirect($redirect)->with('msg', 'Postagem excluída com sucesso!');
+            return redirect($redirect)->with('msg', 'Postagem excluï¿½da com sucesso!');
         } else {
             return redirect($redirect)->withErrors('Erro ao excluir a postagem')->withInput();
         }

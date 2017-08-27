@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\FaleConosco;
 use Mail;
-use App\TagSeo;
+use App\Models\TagSeo;
 
 class FaleConoscoController extends Controller
 {

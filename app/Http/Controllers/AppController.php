@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
-use App\TagSeo;
-use App\Conteudo;
+use App\Models\Post;
+use App\Models\TagSeo;
+use App\Models\Conteudo;
 use App\Mail\TesteEmail;
 use Illuminate\Support\Facades\Mail;
 

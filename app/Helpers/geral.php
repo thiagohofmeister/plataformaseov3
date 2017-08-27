@@ -1,5 +1,5 @@
 <?php
-use App\TagSeo;
+use App\Models\TagSeo;
 
 function createConstants()
 {
@@ -12,7 +12,7 @@ function createConstants()
     }
 
     /**
-     * Constantes Padrões
+     * Constantes Padrï¿½es
      */
     define('DS', DIRECTORY_SEPARATOR);
     define('VIEWS', '..' . DS . 'resources' . DS . 'views' . DS);

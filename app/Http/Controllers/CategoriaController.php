@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Categoria;
-use App\Post;
+use App\Models\Categoria;
+use App\Models\Post;
 
 class CategoriaController extends Controller {
 

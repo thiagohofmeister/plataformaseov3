@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\TagSeo;
-use App\Tag;
-use App\Categoria;
-use App\Post;
-use App\PaginaSeo;
-use App\Conteudo;
+use App\Models\TagSeo;
+use App\Models\Tag;
+use App\Models\Categoria;
+use App\Models\Post;
+use App\Models\PaginaSeo;
+use App\Models\Conteudo;
 
 class TagSeoController extends Controller {
 
