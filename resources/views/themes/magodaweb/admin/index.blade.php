@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ url('admin/pages/comentarios-lista.php') }}">
+                <a href="{{ url('admin/comentarios') }}">
                     <div class="panel-footer">
                         <span class="pull-left">Ver todos</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ url('admin/pages/post-lista.php') }}">
+                <a href="{{ url('admin/posts') }}">
                     <div class="panel-footer">
                         <span class="pull-left">Ver todos</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
