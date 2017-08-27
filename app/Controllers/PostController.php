@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Controllers\Controller;
 use App\Models\Post;
 use App\Models\TagSeo;
 use App\Models\Comentario;
