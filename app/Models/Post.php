@@ -77,7 +77,7 @@ class Post extends Model {
             DB::raw('count(comentarios.id) as comentarios')
         )
             ->join('categorias', 'categorias.id', '=', 'posts.id_categoria')
-            ->leftJoin('comentarios', ["comentarios.id_post" => 'posts.id'], "comentarios.status = '". Enum\Comentario\Status::APROVADO ."'")
+            ->leftJoinWhere('comentarios', ["comentarios.id_post" => 'posts.id'], "comentarios.status", Enum\Comentario\Status::APROVADO)
             ->orderBy('data_postagem', 'desc')
             ->where('posts.status', Enum\Post\Status::PUBLISHED)
             ->groupBy(
