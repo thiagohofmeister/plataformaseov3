@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Comentario;
 use App\Post;
 
@@ -23,10 +22,12 @@ class ComentarioController extends Controller {
 
     /**
      * Cadastrar Comentário
-     * 
+     *
      * @param string $categoria - slug da categoria
      * @param string $post - slug do post
      * @param Request $request - inputs do formulário
+     *
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function add($categoria, $post, Request $request) {
         $req = $request->except('_token');
@@ -57,5 +58,4 @@ class ComentarioController extends Controller {
             return redirect($url)->with('msg', 'Erro ao cadastrar comentário!');
         }
     }
-
 }

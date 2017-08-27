@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Mail\FaleConosco;
 use Mail;
 use App\TagSeo;
 
 class FaleConoscoController extends Controller
 {
-	/**
-	 * Envia o E-mail de Contato
-	 */
+    /**
+     * Envia o E-mail de Contato
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function mail(Request $request) {
     	$Tag = new TagSeo();
     	$Tag = $Tag->select('email')->first();

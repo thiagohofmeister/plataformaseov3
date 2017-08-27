@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -32,6 +31,8 @@ class Controller extends BaseController {
      * @param File $file
      * @param string $path
      * @param string $name
+     *
+     * @return string
      */
     public function upload($file, $path, $name) {
         $path = 'public/' . $path;
@@ -129,5 +130,4 @@ class Controller extends BaseController {
             return date('d/m/Y H:i:s', strtotime(str_replace('/', '-', $data)));
         }
     }
-
 }

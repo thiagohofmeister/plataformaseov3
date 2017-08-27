@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\PaginaSeo;
-use Illuminate\Support\Facades\DB;
 
 class PaginaSeoController extends Controller
 {

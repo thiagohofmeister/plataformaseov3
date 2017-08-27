@@ -95,7 +95,6 @@ class UsuarioController extends Controller {
         $validar = DB::table('password_resets')->where('token', $req['token'])->where('email', $req['email'])->first();
         if (!empty($validar->email)) {
             $this->Usuario = $this->Usuario->where('email', $req['email'])->first();
-            $senha = $this->Usuario->password;
             $this->Usuario->password = Hash::make($req['password']);
             
             $up = ['password' => $this->Usuario->password];
