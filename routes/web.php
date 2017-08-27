@@ -14,9 +14,6 @@ Route::get('/', 'AppController@index');
 Route::get('/home', 'HomeController@index');
 Route::get('/envia', 'AppController@envia');
 
-/**
- * Login Colaborador
- */
 Route::group(['middleware' => 'usuario'], function() {
 
     Route::group(['middleware' => 'usuario:usuario'], function() {
