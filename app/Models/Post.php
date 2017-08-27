@@ -64,6 +64,9 @@ class Post extends Model {
     }
 
     public function getPosts($limit = null, $related = false, $valid_category = false) {
+        $subSelect = "select count(*) from comentarios where id_post = posts.id and status = '" .
+            Enum\Comentario\Status::APROVADO . "'";
+
         $Posts = $this->select(
             'posts.id',
             'posts.titulo',
@@ -73,11 +76,11 @@ class Post extends Model {
             'posts.seo_open_graph',
             'posts.data_postagem',
             'categorias.nome as categoria',
-            'categorias.slug as categoria_slug', 
-            DB::raw('count(comentarios.id) as comentarios')
+            'categorias.slug as categoria_slug'
         )
             ->join('categorias', 'categorias.id', '=', 'posts.id_categoria')
-            ->leftJoinWhere('comentarios', ["comentarios.id_post" => 'posts.id'], "comentarios.status", Enum\Comentario\Status::APROVADO)
+            ->leftJoin('comentarios', ["comentarios.id_post" => 'posts.id'])
+            ->selectSub($subSelect, 'comentarios')
             ->orderBy('data_postagem', 'desc')
             ->where('posts.status', Enum\Post\Status::PUBLISHED)
             ->groupBy(
