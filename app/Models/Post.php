@@ -59,7 +59,7 @@ class Post extends Model {
         ->join('categorias', 'posts.id_categoria', '=', 'categorias.id')
         ->join('usuarios', 'posts.id_usuario', '=', 'usuarios.id')
         ->where('posts.slug', $slug)
-        ->where('posts.status', 1)
+        ->where('posts.status', Enum\Post\Status::PUBLISHED)
         ->first();
     }
 
@@ -77,9 +77,9 @@ class Post extends Model {
             DB::raw('count(comentarios.id) as comentarios')
         )
             ->join('categorias', 'categorias.id', '=', 'posts.id_categoria')
-            ->leftJoin('comentarios', ["comentarios.id_post" => 'posts.id'], "comentarios.status = 'a'")
+            ->leftJoin('comentarios', ["comentarios.id_post" => 'posts.id'], "comentarios.status = '". Enum\Comentario\Status::APROVADO ."'")
             ->orderBy('data_postagem', 'desc')
-            ->where('posts.status', 1)
+            ->where('posts.status', Enum\Post\Status::PUBLISHED)
             ->groupBy(
                 'comentarios.id_post',
                 'posts.id',
@@ -106,7 +106,7 @@ class Post extends Model {
         $Posts = $this->select('posts.*', 'categorias.nome as categoria', 'categorias.slug as categoria_slug')
                 ->join('categorias', 'categorias.id', '=', 'posts.id_categoria')
                 ->orderBy('data_postagem', 'desc')
-                ->where('posts.status', 0)
+                ->where('posts.status', Enum\Post\Status::DRAFT)
                 ->limit($limit)
                 ->get();
 
@@ -120,7 +120,7 @@ class Post extends Model {
     public function getPostsCategory($cat_id, $related = false) {
         $Posts = $this->select('posts.*', 'categorias.slug as categoria_slug')
             ->join('categorias', 'posts.id_categoria', '=', 'categorias.id')
-            ->where('posts.id_categoria', $cat_id)->where('posts.status', 1)->get();
+            ->where('posts.id_categoria', $cat_id)->where('posts.status', Enum\Post\Status::PUBLISHED)->get();
 
         if ($related) {
             $this->getRelatedPosts($Posts, true);

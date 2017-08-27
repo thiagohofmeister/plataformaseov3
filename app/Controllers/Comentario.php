@@ -3,14 +3,14 @@
 namespace App\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Comentario;
+use App\Models\Comentario as Model;
 use App\Models\Post;
 
-class ComentarioController extends Controller {
-    /** @var Comentario */
+class Comentario extends Controller {
+    /** @var Model */
     private $Comentario;
 
-    public function __construct(Comentario $comentario) {
+    public function __construct(Model $comentario) {
         $this->Comentario = $comentario;
     }
 

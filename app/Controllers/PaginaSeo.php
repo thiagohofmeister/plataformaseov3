@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\PaginaSeo;
+use App\Models\PaginaSeo as Model;
 
-class PaginaSeoController extends Controller {
-    /** @var PaginaSeo */
+class PaginaSeo extends Controller {
+    /** @var Model */
     private $PaginaSeo;
 
-    public function __construct(PaginaSeo $ps = null) {
+    public function __construct(Model $ps = null) {
     	$this->PaginaSeo = $ps;
     }
 

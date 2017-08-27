@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\Categoria;
+use App\Models\Categoria as Model;
 use App\Models\Post;
 use Illuminate\View\View;
 
-class CategoriaController extends Controller {
-    /** @var Categoria */
-    private $Categoria;
+class Categoria extends Controller {
+    /** @var Model */
+    private $categoria;
 
-    public function __construct(Categoria $categoria = null) {
-        $this->Categoria = $categoria;
+    public function __construct(Model $categoria = null) {
+        $this->categoria = $categoria;
+        if (empty($categoria)) {
+            $this->categoria = new Model();
+        }
     }
 
     /**
@@ -22,7 +25,7 @@ class CategoriaController extends Controller {
      * @return View com uma listagem das categorias
      */
     public function index() {
-        $Categorias = $this->Categoria->getCats();
+        $Categorias = $this->categoria->getCats();
 
         return view(TM . 'admin/categorias/index', compact('Categorias'));
     }
@@ -44,7 +47,7 @@ class CategoriaController extends Controller {
             $req['slug'] = $this->makeSlug($req['nome']);
         }
 
-        $validator = validator($req, $this->Categoria->fields_validator, $this->Categoria->msgs_validator);
+        $validator = validator($req, $this->categoria->fields_validator, $this->categoria->msgs_validator);
         if ($validator->fails()) {
             return redirect('admin/categorias/add')->withErrors($validator)->withInput();
         }
@@ -57,7 +60,7 @@ class CategoriaController extends Controller {
             $req['seo_open_graph'] = $this->upload($file, $file_path, $file_name);
         }
 
-        $save = $this->Categoria->create($req);
+        $save = $this->categoria->create($req);
 
         if ($save) {
             return redirect('admin/categorias/add')->with('msg', 'Categoria cadastrada com sucesso!');
@@ -73,7 +76,7 @@ class CategoriaController extends Controller {
      * @return View Edição
      */
     public function edit($id) {
-        $Categoria = $this->Categoria->find($id);
+        $Categoria = $this->categoria->find($id);
 
         return view(TM . 'admin/categorias/edit', compact('Categoria'));
     }
@@ -94,13 +97,13 @@ class CategoriaController extends Controller {
             $req['slug'] = $this->makeSlug($req['nome']);
         }
         
-        $fields = $this->Categoria->fields_validator;
+        $fields = $this->categoria->fields_validator;
         unset($fields['seo_open_graph']);
         
         $fields['slug'] = 'unique:categorias,slug,' . $id;
         
         
-        $validator = validator($req, $fields, $this->Categoria->msgs_validator);
+        $validator = validator($req, $fields, $this->categoria->msgs_validator);
         if ($validator->fails()) {
             return redirect('admin/categorias/edit/' . $id)->withErrors($validator)->withInput();
         }
@@ -113,7 +116,7 @@ class CategoriaController extends Controller {
             $req['seo_open_graph'] = $this->upload($file, $file_path, $file_name);;
         }
 
-        $upload = $this->Categoria->where('id', $id)->update($req);
+        $upload = $this->categoria->where('id', $id)->update($req);
 
         if ($upload) {
             return redirect('admin/categorias/edit/'.$id)->with('msg', 'Categoria modificada com sucesso!');
@@ -135,11 +138,11 @@ class CategoriaController extends Controller {
         
         if (count($PostsVinculados) > 0) {
             $up = ['status' => 0];
-            $this->Categoria->find($id)->update($up);
+            $this->categoria->find($id)->update($up);
             return redirect('admin/categorias/')->with('msg', 'Existem postagens vinculadas com essa categoria, então a categoria foi apenas inativada e não excluída.');
         }
         
-        $delete = $this->Categoria->find($id)->delete();
+        $delete = $this->categoria->find($id)->delete();
         
         if ($delete) {
             return redirect('admin/categorias/')->with('msg', 'Categoria excluída com sucesso!');
@@ -156,7 +159,7 @@ class CategoriaController extends Controller {
      * @return RedirectResponse
      */
     public function status($id) {
-        $Categoria = $this->Categoria->find($id);
+        $Categoria = $this->categoria->find($id);
         
         $up['status'] = 1;
         $msg = 'A categoria ' . $Categoria->nome . ' foi ';

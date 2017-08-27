@@ -2,13 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Models\Lead;
+use App\Models\Lead as Model;
 
-class LeadController extends Controller {
-    /** @var Lead */
+class Lead extends Controller {
+    /** @var Model */
     private $Lead;
 
-    public function __construct(Lead $lead = null) {
+    public function __construct(Model $lead = null) {
     	$this->Lead = $lead;
     }
    	
