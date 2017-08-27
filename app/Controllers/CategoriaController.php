@@ -13,8 +13,6 @@ class CategoriaController extends Controller {
     private $Categoria;
 
     public function __construct(Categoria $categoria = null) {
-        parent::__construct();
-
         $this->Categoria = $categoria;
     }
 

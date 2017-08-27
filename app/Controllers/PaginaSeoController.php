@@ -9,8 +9,6 @@ class PaginaSeoController extends Controller {
     private $PaginaSeo;
 
     public function __construct(PaginaSeo $ps = null) {
-        parent::__construct();
-
     	$this->PaginaSeo = $ps;
     }
 

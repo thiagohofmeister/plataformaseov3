@@ -14,7 +14,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
-class PostController extends Controller {
+class PostController extends Seo {
     /** @var Post */
     private $Post;
 

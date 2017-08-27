@@ -8,8 +8,6 @@ class TipoConteudoController extends Controller {
     private $TipoConteudo;
     
     public function __construct(TipoConteudo $tc) {
-        parent::__construct();
-
         $this->TipoConteudo = $tc;
     }
     

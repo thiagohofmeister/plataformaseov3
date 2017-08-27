@@ -9,8 +9,6 @@ class LeadController extends Controller {
     private $Lead;
 
     public function __construct(Lead $lead = null) {
-        parent::__construct();
-
     	$this->Lead = $lead;
     }
    	

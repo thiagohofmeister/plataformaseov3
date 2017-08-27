@@ -11,8 +11,6 @@ class ComentarioController extends Controller {
     private $Comentario;
 
     public function __construct(Comentario $comentario) {
-        parent::__construct();
-
         $this->Comentario = $comentario;
     }
 

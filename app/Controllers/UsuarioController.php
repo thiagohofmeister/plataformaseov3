@@ -18,8 +18,6 @@ class UsuarioController extends Controller {
     private $Usuario;
 
     public function __construct(Usuario $usuario) {
-        parent::__construct();
-
         $this->Usuario = $usuario;
     }
 

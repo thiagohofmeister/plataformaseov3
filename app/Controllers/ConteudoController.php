@@ -9,8 +9,6 @@ class ConteudoController extends Controller {
     private $Conteudo;
     
     public function __construct(Conteudo $cont) {
-        parent::__construct();
-
         $this->Conteudo = $cont;
     }
     

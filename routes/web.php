@@ -6,7 +6,7 @@ Route::group(['prefix' => ''], function() {
 });
 
 // Index
-Route::get('/', 'AppController@index');
+Route::get('/', 'Site@index');
 
 Route::get('/home', 'HomeController@index');
 Route::get('/envia', 'AppController@envia');
@@ -121,7 +121,7 @@ Route::group(['middleware' => 'usuario'], function() {
 
     Route::post('/contato', 'FaleConoscoController@mail');
 
-    Route::get('/{url}', 'TagSeoController@router');
+    Route::get('/{url}', 'Action\Config@router');
 
     Route::get('/{categoria}/{post}', 'PostController@single');
     Route::post('/{categoria}/{post}', 'ComentarioController@add');

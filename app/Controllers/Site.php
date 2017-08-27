@@ -7,7 +7,7 @@ use App\Models\TagSeo;
 use App\Models\Conteudo;
 use Illuminate\View\View;
 
-class AppController extends Controller {
+class Site extends Controller {
     /**
      * Retorna a view inicial do site.
      *
@@ -27,4 +27,6 @@ class AppController extends Controller {
 
         return view(TM . 'index', compact('Posts', 'Seo', 'CaseUm', 'CaseDois', 'Servicos'));
     }
+
+
 }
