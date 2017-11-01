@@ -7,18 +7,18 @@ use App\Enum\Label;
 /**
  * Enum de status das postagens.
  *
- * @method static Status DRAFT()
- * @method static Status PUBLISHED()
+ * @method static PossuiSeo NO()
+ * @method static PossuiSeo YES()
  *
  * @author Thiago Hofmeister <thiago.hofmeister@gmail.com>
  */
-class Status extends Label
+class PossuiSeo extends Label
 {
     /** @var int Postagem rascunho. */
-    const DRAFT = 0;
+    const NO = 0;
 
     /** @var int Postagem publicada. */
-    const PUBLISHED = 1;
+    const YES = 1;
 
     /**
      * @inheritDoc
@@ -26,8 +26,8 @@ class Status extends Label
     protected function getLabels()
     {
         return [
-            self::DRAFT => "Rascunho",
-            self::PUBLISHED => "Publicado"
+            self::NO => "Não",
+            self::YES => "Sim"
         ];
     }
 
@@ -40,23 +40,11 @@ class Status extends Label
     {
         switch($this->value()) {
 
-            case self::DRAFT:
+            case self::NO:
                 return "danger";
 
-            case self::PUBLISHED:
+            case self::YES:
                 return "success";
-        }
-    }
-
-    public function getIconName()
-    {
-        switch($this->value()) {
-
-            case self::DRAFT:
-                return "check";
-
-            case self::PUBLISHED:
-                return "times";
         }
     }
 }
