@@ -30,4 +30,33 @@ class Status extends Label
             self::PUBLISHED => "Publicado"
         ];
     }
+
+    /**
+     * Retorna a classe para usar nas views.
+     *
+     * @return string
+     */
+    public function getClassStyle()
+    {
+        switch($this->value()) {
+
+            case self::DRAFT:
+                return "danger";
+
+            case self::PUBLISHED:
+                return "success";
+        }
+    }
+
+    public function getIconName()
+    {
+        switch($this->value()) {
+
+            case self::DRAFT:
+                return "check";
+
+            case self::PUBLISHED:
+                return "times";
+        }
+    }
 }
