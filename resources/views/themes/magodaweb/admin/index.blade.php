@@ -139,14 +139,14 @@
                                         @foreach ($Posts as $Post)
                                         <tr class="even">
                                             <td class="img-responsive"><img src="{{ url($Post->seo_open_graph ? $Post->seo_open_graph : $Post->imagem) }}" width="100" alt="{{ $Post->titulo }}"></td>
-                                            <td>{{ $Post->titulo }}{{ $Post->status == 'r' ? "<i>(rascunho)</i>" : '' }}</td>
+                                            <td>{{ $Post->titulo }}{{ $Post->status == \App\Enum\Post\Status::DRAFT ? "<i>(rascunho)</i>" : '' }}</td>
                                             <td>{{ $Post->categoria }}</td>
-                                            <td><button type="button" class="btn btn-{{ $Post->possui_seo == 's' ? 'success' : 'danger' }} btn-xs">{{ $Post->possui_seo == 's' ? 'Sim' : 'Não' }}</button></td>
+                                            <td><button type="button" class="btn btn-{{ $Post->possui_seo == \App\Enum\Post\Status::PUBLISHED ? 'success' : 'danger' }} btn-xs">{{ $Post->possui_seo == 's' ? 'Sim' : 'Não' }}</button></td>
                                             <td>{{ date('d/m/Y H:i', strtotime($Post->data_postagem)) }}</td>
                                             <td class="center">
                                                 <a href="{{ url('admin/posts/edit/'.$Post->id) }}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ url('admin/pages/post-novo.php?postid={$Post->id}') }}" class="btn btn-{{ $Post->status == 'i' ? 'success' : 'danger'}} btn-circle"><i class="fa fa-{{ $Post->status == 'i' ? 'check' : 'times' }}"></i></a>
-                                                @if ($Post->status == 'i')
+                                                <a href="{{ url('admin/pages/post-novo.php?postid={$Post->id}') }}" class="btn btn-{{ $Post->status == \App\Enum\Post\Status::PUBLISHED ? 'success' : 'danger'}} btn-circle"><i class="fa fa-{{ $Post->status == 'i' ? 'check' : 'times' }}"></i></a>
+                                                @if ($Post->status == \App\Enum\Post\Status::DRAFT)
                                                 <a href="{{ url('admin/pages/post-novo.php?exe=delete&postid={$Post->id}') }}" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></a>
                                                 @endif
                                             </td>
