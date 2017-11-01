@@ -224,7 +224,7 @@ class Post extends Seo {
      *
      * @return view com um objeto de posts
      */
-    public function rascunhos() {
+    public function drafts() {
         $Posts = $this->Post->getPostsDrafts();
         return view(TM . 'admin/posts/index', compact('Posts'));
     }
