@@ -76,6 +76,7 @@ class Post extends Model {
             'posts.seo_open_graph',
             'posts.data_postagem',
             'posts.possui_seo',
+            'posts.status',
             'categorias.nome as categoria',
             'categorias.slug as categoria_slug'
         )
@@ -94,6 +95,7 @@ class Post extends Model {
                 'posts.seo_open_graph',
                 'posts.data_postagem',
                 'posts.possui_seo',
+                'posts.status',
                 'categorias.nome',
                 'categorias.slug'
             )
