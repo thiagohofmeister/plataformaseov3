@@ -156,7 +156,7 @@ class Post extends Seo {
             return redirect('admin/posts/add')->withErrors($validator)->withInput();
         }
 
-        $this->Post = $this->Post->where('id', $id);
+        $this->Post = $this->Post->find($id);
 
         // Imagem Principal
         $file = $request->file('imagem');
@@ -255,7 +255,7 @@ class Post extends Seo {
         $TagsVinculadas->deleteRelation($id);
 
         $delete = $this->Post->find($id)->delete();
-        
+
         if ($delete) {
             return redirect($redirect)->with('msg', 'Postagem exclu�da com sucesso!');
         } else {
