@@ -107,7 +107,7 @@ class Post extends Seo {
             !empty($req['seo_title']) &&
             !empty($req['seo_description']) &&
             !empty($req['seo_spam_text']) &&
-            !empty($req['seo_open_graph'])
+            (!empty($req['seo_open_graph']) || !empty($req['imagem']))
         ) {
             $req['possui_seo'] = 1;
         } else {
@@ -156,6 +156,8 @@ class Post extends Seo {
             return redirect('admin/posts/add')->withErrors($validator)->withInput();
         }
 
+        $this->Post = $this->Post->where('id', $id);
+
         // Imagem Principal
         $file = $request->file('imagem');
         if (!empty($file)) {
@@ -186,15 +188,18 @@ class Post extends Seo {
             !empty($req['seo_title']) &&
             !empty($req['seo_description']) &&
             !empty($req['seo_spam_text']) &&
-            !empty($req['seo_open_graph'])
+            (
+                !empty($req['seo_open_graph']) || !empty($req['imagem']) ||
+                !empty($this->Post->imagem) || !empty($this->Post->seo_open_graph)
+            )
         ) {
             $req['possui_seo'] = 1;
         } else {
             $req['possui_seo'] = 0;
         }
 
-        $upload = $this->Post->where('id', $id)->update($req);
-        
+        $upload = $this->Post->update($req);
+
         if ($upload) {
             return redirect('admin/posts/edit/' . $id)->with('msg', 'Artigo atualizado com sucesso!');
         } else {
