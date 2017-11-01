@@ -107,7 +107,7 @@ class Post extends Seo {
             !empty($req['seo_title']) &&
             !empty($req['seo_description']) &&
             !empty($req['seo_spam_text']) &&
-            !empty($req['seo_open_graph'])
+            (!empty($req['seo_open_graph']) || !empty($req['imagem']))
         ) {
             $req['possui_seo'] = 1;
         } else {
@@ -188,7 +188,7 @@ class Post extends Seo {
             !empty($req['seo_title']) &&
             !empty($req['seo_description']) &&
             !empty($req['seo_spam_text']) &&
-            !empty($req['seo_open_graph'])
+            (!empty($req['seo_open_graph']) || !empty($req['imagem']))
         ) {
             $req['possui_seo'] = 1;
         } else {
