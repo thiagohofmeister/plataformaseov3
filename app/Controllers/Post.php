@@ -183,6 +183,8 @@ class Post extends Seo {
 
         unset($req['Tags']);
 
+        dd($req);
+
         // Validar SEO
         if (
             !empty($req['seo_title']) &&
