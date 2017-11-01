@@ -56,19 +56,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($Posts as $Post)
-                                        <tr class="even">
-                                            <td class="img-responsive"><img src="{{ url($Post->imagem) }}" width="100px" alt="{{ $Post->titulo }}"></td>
-                                            <td>{{ $Post->titulo }}{!! $Post->status == \App\Enum\Post\Status::DRAFT ? " <i>(rascunho)</i>" : '' !!}</td>
-                                            <td>{{ $Post->categoria }}</td>
-                                            <td><button type="button" class="btn btn-{{ $Post->possui_seo == \App\Enum\Post\Status::PUBLISHED ? 'success' : 'danger' }} btn-xs">{{ $Post->possui_seo == 's' ? 'Sim' : 'Não' }}</button></td>
-                                            <td><?= date('d/m/Y H:i', strtotime($Post->data_postagem)); ?></td>
-                                            <td class="center">
-                                                <a href="{{ url('admin/posts/edit/'. $Post->id) }}" class="btn btn-warning btn-circle"><i class="fa fa-edit"></i></a>
-                                                <a href="javascript:void(0)" data-ref="{{ url('admin/posts/delete/' . $Post->id) }}" class="btn btn-danger btn-circle confirm-delete"><i class="fa fa-times"></i></a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+                                        @each(TM . 'admin.components.post', $Posts, 'Post')
                                     </tbody>
                                 </table>
                             </div>
@@ -76,7 +64,6 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
-
 
                     <!-- /.panel-body -->
                 </div>
