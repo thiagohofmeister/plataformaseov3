@@ -8,6 +8,9 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Credentials: true');
+
 class Controller extends BaseController {
     use AuthorizesRequests,
         DispatchesJobs,
