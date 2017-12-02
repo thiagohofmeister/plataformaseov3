@@ -21,4 +21,4 @@ Route::resource('categories', 'CategoriaController', [
     'only' => ['index']
 ]);
 
-Route::get('getPosts', 'CategoriaController@getPosts');
+Route::get('getPosts', 'PostController@getPosts');
