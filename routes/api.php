@@ -17,6 +17,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-Route::resource('tags', 'CategoriaController', [
+Route::resource('categories', 'CategoriaController', [
     'only' => ['index']
 ]);
+
+Route::get('getPosts', 'PostController@getPosts');
