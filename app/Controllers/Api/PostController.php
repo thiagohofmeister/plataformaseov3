@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Api;
 
-use App\Controllers\Controller;
+use App\Controllers\Seo;
 use App\Models\Post as Model;
 
 /**
@@ -10,7 +10,7 @@ use App\Models\Post as Model;
  *
  * @author Thiago Hofmeister <thiago.souza@moovin.com.br>
  */
-class PostController extends Controller
+class PostController extends Seo
 {
     /** @var Model */
     private $Post;
